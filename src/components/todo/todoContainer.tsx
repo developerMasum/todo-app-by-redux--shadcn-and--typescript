@@ -1,16 +1,29 @@
-import { Button } from "../ui/button";
+
+import { useAppSelector } from "@/redux/features/hook";
+import AddToDoModal from "./addTodoModal";
 import TodoCard from "./todoCard";
+import TodoFilter from "./todoFilter";
+
+
 
 const TodoContainer = () => {
+    const todos = useAppSelector(state=>state.todos)
+    console.log('err',todos,typeof(todos));
     return (
         <div>
             <div className="flex justify-between mb-5 ">
-                <Button className="bg-primary-gradient text-xl font-semibold ">ADD TODO </Button>
-                <Button>Filter</Button>
+               
+                <AddToDoModal />
+                <TodoFilter />
             </div>
             <div className=" bg-primary-gradient w-full h-full rounded-xl   p-[5px]">
                 <div className="bg-white w-full p-5 h-full rounded-lg space-y-3 ">
-             <TodoCard/>
+
+             
+             {
+                todos.map(item=> <TodoCard title={item.title} description={item.description}/> )
+             }
+            
 
                 </div>
              {/* <div className="bg-white p-3 flex justify-center items-center text-2xl font-bold ">
