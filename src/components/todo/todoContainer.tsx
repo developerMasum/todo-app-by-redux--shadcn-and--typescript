@@ -1,11 +1,20 @@
-import { useAppSelector } from "@/redux/features/hook";
+// import { useAppSelector } from "@/redux/features/hook";
+import { useGetTodosQuery } from "@/redux/api/api";
 import AddToDoModal from "./addTodoModal";
 import TodoCard from "./todoCard";
 import TodoFilter from "./todoFilter";
 
+
 const TodoContainer = () => {
-  const todos = useAppSelector((state) => state.todos);
-  console.log("err", todos, typeof todos);
+  // from local 
+  // const {todos} = useAppSelector((state) => state.todos);
+  // console.log("err", todos, typeof todos);
+
+  // from server 
+  const {data:todos}= useGetTodosQuery(undefined)
+  console.log(todos);
+
+  
   return (
     <div>
       <div className="flex justify-between mb-5 ">
