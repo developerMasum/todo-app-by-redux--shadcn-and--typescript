@@ -26,8 +26,8 @@ const TodoContainer = () => {
         <div className="bg-primary-gradient w-full h-full rounded-xl p-[5px]">
           <div className="bg-white w-full p-5 h-full rounded-lg space-y-3">
          
-            {todos.map((item, index) => (
-              <TodoCard key={index} {...item} />
+            {todos.map((item) => (
+              <TodoCard key={item._id} {...item} />
             ))}
           </div>
         </div>
